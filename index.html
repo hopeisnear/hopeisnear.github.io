@@ -60,7 +60,8 @@
                         <span class="label label-info">Markup</span>
                         <div style="background-color: #f0f0f0;">
                             <xmp class="code prettyprint">
-                                <select data-jq-select2="" data-ng-model="country" data-ng-options="country.code as country.name for country in countries" placeholder="Select country">
+                                <select data-jq-select2="" data-ng-model="country" placeholder="Select country"
+                                        data-ng-options="country.code as country.name for country in countries">
                                     <option></option>
                                 </select>
                             </xmp>
@@ -85,7 +86,7 @@
                     <h2>Preselected value and no empty option available</h2>
                     <div>
                         <div>
-                            <select class="jq-select2" data-jq-select2="" data-ng-model="preselectedCountry" data-ng-options="country.name for country in countries" placeholder="Select country">
+                            <select class="jq-select2" data-jq-select2="" data-ng-model="preselectedCountry" data-ng-options="country.code as country.name for country in countries" placeholder="Select country">
                             </select>
                         </div>
                         <div>
@@ -97,7 +98,8 @@
                         <span class="label label-info">Markup</span>
                         <div style="background-color: #f0f0f0;">
                             <xmp class="code prettyprint">
-                                <select class="jq-select2" data-jq-select2="" data-ng-model="preselectedCountry" data-ng-options="country.name for country in countries" placeholder="Select country">
+                                <select data-jq-select2="" data-ng-model="preselectedCountry" placeholder="Select country"
+                                        data-ng-options="country.code as country.name for country in countries">
                                 </select>
                             </xmp>
                         </div>
@@ -106,7 +108,7 @@
                         Data in format:
                         <div style="background-color: #f0f0f0;">
                             <xmp class="code prettyprint">
-                                $scope.preselectedCountry = $scope.countries[5];
+                                $scope.preselectedCountry = $scope.countries[5].code;
                             </xmp>
                         </div>
                     </div>
@@ -120,7 +122,8 @@
                                 Use load states button to load data from json file.
                             </div>
 
-                            <select class="jq-select2" data-jq-select2="statesSelect2Options" data-ng-model="state" data-ng-options="key as value for (key, value) in states" placeholder="Select state">
+                            <select class="jq-select2" data-jq-select2="statesSelect2Options" placeholder="Select state"
+                                    data-ng-model="state" data-ng-options="key as value for (key, value) in states">
                                 <option></option>
                             </select>
                             <button style="margin-left: 8px; padding-top: 3px; padding-bottom: 3px;" class="btn btn-sm btn-default" data-ng-click="loadStates()" data-ng-hide="states">Load states</button>
@@ -135,7 +138,8 @@
                         <span class="label label-info">Markup</span>
                         <div style="background-color: #f0f0f0;">
                             <xmp class="code prettyprint">
-                                <select class="jq-select2" data-jq-select2="statesSelect2Options" data-ng-model="state" data-ng-options="key as value for (key, value) in states" placeholder="Select state">
+                                <select data-jq-select2="statesSelect2Options" data-ng-model="state"
+                                        data-ng-options="key as value for (key, value) in states" placeholder="Select state">
                                     <option></option>
                                 </select>
                             </xmp>

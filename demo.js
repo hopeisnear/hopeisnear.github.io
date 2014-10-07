@@ -251,7 +251,7 @@ app.controller('DemoCtrl', function($scope, $http) {
     {name: 'Zimbabwe', code: 'ZW'}
   ];
 
-  $scope.preselectedCountry = $scope.countries[5];
+  $scope.preselectedCountry = $scope.countries[5].code;
 
   $scope.statesSelect2Options = {
     minimumResultsForSearch: -1
