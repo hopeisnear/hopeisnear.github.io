@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ui-select</title>
+
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../bower_components/angular/angular.js"></script>
+  <link rel="stylesheet" href="../bower_components/select2-bootstrap-css/select2-bootstrap.css">
+  <script src="../bower_components/google-code-prettify/bin/run_prettify.min.js"></script>
+
+  <script src="../bower_components/select2/select2.js"></script>
+  <link rel="stylesheet" href="../bower_components/select2/select2.css">
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+
+  <script src="../src/jqSelect2.js"></script>
+  <script src="demo.js"></script>
+
+  <style>
+      .jq-select2 {
+          width: 300px;
+      }
+
+      .code {
+          margin: 0px 0px 0px -140px;
+          font-size: 12px;
+      }
+
+  </style>
+
+</head>
+
+<body ng-controller="DemoCtrl">
+
+    <div class="jumbotron">
+        <div class="container">
+            <p>This page includes example usages of angular select 2 directive.</p>
+            <a class="btn btn-default" href="https://github.com/hopeisnear/angular-select2"><i class="icon-github"></i>Code on Github</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="page-header">
+                <div>
+                    <h2>No parameters and empty option</h2>
+                    <div>
+                        <div>
+                            <select class="jq-select2" data-jq-select2="" data-ng-model="country" data-ng-options="country.code as country.name for country in countries" placeholder="Select country">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div>
+                            Selected value in model: <xmp style="display: inline-block;" class="prettyprint">{{country || 'undefined'}}</xmp>
+                        </div>
+
+                    </div>
+                    <div class="code-markup">
+                        <span class="label label-info">Markup</span>
+                        <div style="background-color: #f0f0f0;">
+                            <xmp class="code prettyprint">
+                                <select data-jq-select2="" data-ng-model="country" data-ng-options="country.code as country.name for country in countries" placeholder="Select country">
+                                    <option></option>
+                                </select>
+                            </xmp>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        Data in format:
+                        <div style="background-color: #f0f0f0;">
+                            <xmp class="code prettyprint">
+                                $scope.countries = [
+                                    {name: 'Afghanistan', code: 'AF'},
+                                    {name: 'Albania', code: 'AL'},
+                                    ...
+                                    {name: 'Zimbabwe', code: 'ZW'}
+                                ];
+                            </xmp>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Preselected value and no empty option available</h2>
+                    <div>
+                        <div>
+                            <select class="jq-select2" data-jq-select2="" data-ng-model="preselectedCountry" data-ng-options="country.name for country in countries" placeholder="Select country">
+                            </select>
+                        </div>
+                        <div>
+                            Selected value in model: <xmp style="display: inline-block;" class="prettyprint">{{preselectedCountry || 'undefined'}}</xmp>
+                        </div>
+
+                    </div>
+                    <div class="code-markup">
+                        <span class="label label-info">Markup</span>
+                        <div style="background-color: #f0f0f0;">
+                            <xmp class="code prettyprint">
+                                <select class="jq-select2" data-jq-select2="" data-ng-model="preselectedCountry" data-ng-options="country.name for country in countries" placeholder="Select country">
+                                </select>
+                            </xmp>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        Data in format:
+                        <div style="background-color: #f0f0f0;">
+                            <xmp class="code prettyprint">
+                                $scope.preselectedCountry = $scope.countries[5];
+                            </xmp>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Dynamic loaded data from json with custom select 2 options</h2>
+                    <div>
+                        <div>
+                            <div style="margin: 10px 0px;">
+                                Use load states button to load data from json file.
+                            </div>
+
+                            <select class="jq-select2" data-jq-select2="statesSelect2Options" data-ng-model="state" data-ng-options="key as value for (key, value) in states" placeholder="Select state">
+                                <option></option>
+                            </select>
+                            <button style="margin-left: 8px; padding-top: 3px; padding-bottom: 3px;" class="btn btn-sm btn-default" data-ng-click="loadStates()" data-ng-hide="states">Load states</button>
+                            <span style="margin-left: 8px;padding-top: 6px; padding-bottom: 6px;" class="label label-success" data-ng-show="states">States loaded</span>
+                        </div>
+                        <div>
+                            Selected value in model: <xmp style="display: inline-block;" class="prettyprint">{{state || 'undefined'}}</xmp>
+                        </div>
+
+                    </div>
+                    <div class="code-markup">
+                        <span class="label label-info">Markup</span>
+                        <div style="background-color: #f0f0f0;">
+                            <xmp class="code prettyprint">
+                                <select class="jq-select2" data-jq-select2="statesSelect2Options" data-ng-model="state" data-ng-options="key as value for (key, value) in states" placeholder="Select state">
+                                    <option></option>
+                                </select>
+                            </xmp>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        Data in format:
+                        <div style="background-color: #f0f0f0;">
+                            <xmp class="code prettyprint">
+                                $scope.states = {
+                                    "AL": "Alabama",
+                                    "AK": "Alaska",
+                                    "AS": "American Samoa",
+                                    "AZ": "Arizona",
+                                    ...
+                                    "WY": "Wyoming"
+                                }
+
+                                $scope.statesSelect2Options = {
+                                    minimumResultsForSearch: -1
+                                };
+                            </xmp>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>© Company 2014</p>
+        </footer>
+    </div>
+
+</body>
+</html>
