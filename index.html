@@ -2,7 +2,7 @@
 <html lang="en" ng-app="demo">
 <head>
   <meta charset="utf-8">
-  <title>AngularJS ui-select</title>
+  <title>AngularJS select 2</title>
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
@@ -51,7 +51,7 @@
                                 <option></option>
                             </select>
                         </div>
-                        <div>
+                        <div style="padding: 4px 0px;">
                             Selected value in model: <xmp style="display: inline-block;" class="prettyprint">{{country || 'undefined'}}</xmp>
                         </div>
 
@@ -89,7 +89,7 @@
                             <select class="jq-select2" data-jq-select2="" data-ng-model="preselectedCountry" data-ng-options="country.code as country.name for country in countries" placeholder="Select country">
                             </select>
                         </div>
-                        <div>
+                        <div style="padding: 4px 0px;">
                             Selected value in model: <xmp style="display: inline-block;" class="prettyprint">{{preselectedCountry || 'undefined'}}</xmp>
                         </div>
 
@@ -115,7 +115,7 @@
                 </div>
 
                 <div>
-                    <h2>Dynamic loaded data from json with custom select 2 options</h2>
+                    <h2>Dynamic loaded data from json with key-value pair as select 2 options</h2>
                     <div>
                         <div>
                             <div style="margin: 10px 0px;">
@@ -129,7 +129,7 @@
                             <button style="margin-left: 8px; padding-top: 3px; padding-bottom: 3px;" class="btn btn-sm btn-default" data-ng-click="loadStates()" data-ng-hide="states">Load states</button>
                             <span style="margin-left: 8px;padding-top: 6px; padding-bottom: 6px;" class="label label-success" data-ng-show="states">States loaded</span>
                         </div>
-                        <div>
+                        <div style="padding: 4px 0px;">
                             Selected value in model: <xmp style="display: inline-block;" class="prettyprint">{{state || 'undefined'}}</xmp>
                         </div>
 
@@ -165,6 +165,68 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div>
+                    <h2>Disabled/enabled </h2>
+                    <div style="margin-bottom: 10px;">
+                        <div>
+                            <div style="margin: 10px 0px;">
+                                Use button to disable enable select 2 dropdown
+                            </div>
+
+                            <select class="jq-select2" data-jq-select2="" placeholder="Select..."
+                                    data-ng-model="someModel" data-ng-disabled="selectDisabled">
+                                <option></option>
+                            </select>
+
+                            <button style="margin-left: 8px; padding-top: 3px; padding-bottom: 3px;" class="btn btn-sm btn-default" data-ng-click="selectDisabled = !selectDisabled"><span data-ng-show="selectDisabled">enable</span><span data-ng-hide="selectDisabled">disable</span></button>
+                        </div>
+                    </div>
+                    <div class="code-markup">
+                        <span class="label label-info">Markup</span>
+                        <div style="background-color: #f0f0f0;">
+                            <xmp class="code prettyprint">
+                                <select class="jq-select2" data-jq-select2="" placeholder="Select..."
+                                        data-ng-model="someModel" data-ng-disabled="selectDisabled">
+                                    <option></option>
+                                </select>
+                            </xmp>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Dynamic placeholder</h2>
+                    <div style="margin-bottom: 10px;">
+                        <div>
+                            <div style="margin: 10px 0px;">
+                               Type in the new placeholder.
+                            </div>
+
+                            <select class="jq-select2" data-jq-select2="" placeholder="{{dynamicPlaceholder}}"
+                                    data-ng-model="someModel">
+                                <option></option>
+                            </select>
+
+                            <input class="form-control" style="margin-left: 8px; width: 300px; display: inline-block;" type="text" data-ng-model="dynamicPlaceholder" placeholder="Type in new select 2 placeholder">
+                        </div>
+                    </div>
+                    <div class="code-markup">
+                        <span class="label label-info">Markup</span>
+                        <div style="background-color: #f0f0f0;">
+                            <xmp class="code prettyprint">
+                                <select class="jq-select2" data-jq-select2="" placeholder="{ {someDynamicPlaceholder} }"
+                                        data-ng-model="someModel">
+                                    <option></option>
+                                </select>
+                                <input type="text" data-ng-model="someDynamicPlaceholder" placeholder="Type in new select 2 placeholder">
+                            </xmp>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
         </div>

@@ -7,8 +7,9 @@
 
         return {
             restrict: 'EA',
-            require: 'ngModel',
-            link: function(scope, element, attrs, ngModelCtrl) {
+            link: function(scope, element, attrs) {
+
+                var params = attrs.jqSelect2 ? scope.$eval(attrs.jqSelect2) : {allowClear: true, minimumResultsForSearch: 8};
 
                 scope.$watch(function() {
                     return $('option:selected', element).val();
@@ -16,16 +17,13 @@
                     element.select2('val', val);
                 });
 
-                if(attrs.jqSelect2) {
-                    element.select2(scope.$eval(attrs.jqSelect2));
-                } else {
-                    element.select2({
-                        allowClear: true,
-                        minimumResultsForSearch: 8
-                    });
-                }
+                //dynamic placeholder support
+                attrs.$observe('placeholder', function(val) {
+                    params.placeholder = val;
+                    element.select2(params);
+                });
 
-
+                element.select2(params);
 
             }
         };
